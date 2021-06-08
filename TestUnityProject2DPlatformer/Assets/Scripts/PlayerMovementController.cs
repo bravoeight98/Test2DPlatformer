@@ -17,6 +17,14 @@ public class PlayerMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Move();
+    }
+
+    //Move the Player Hrizontally
+    void Move() 
+    { 
+        float x = Input.GetAxisRaw("Horizontal"); 
+        float moveBy = x * speed; 
+        rb.velocity = new Vector2(moveBy, rb.velocity.y); 
     }
 }
