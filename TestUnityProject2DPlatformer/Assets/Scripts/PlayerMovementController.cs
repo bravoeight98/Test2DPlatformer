@@ -78,3 +78,4 @@ public class PlayerMovementController : MonoBehaviour
         } 
     }
 }
+// Special Thanks to https://craftgames.co/unity-2d-platformer-movement/#Setting_up_basic_platformer_movement
