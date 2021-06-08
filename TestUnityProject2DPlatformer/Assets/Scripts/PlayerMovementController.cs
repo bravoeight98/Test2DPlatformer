@@ -12,7 +12,7 @@ public class PlayerMovementController : MonoBehaviour
 
     bool isGrounded = false; 
     public Transform isGroundedChecker; 
-    public float checkGroundRadius; 
+    public float checkGroundRadius = 0.5f; 
     public LayerMask groundLayer;
 
     // Start is called before the first frame update
