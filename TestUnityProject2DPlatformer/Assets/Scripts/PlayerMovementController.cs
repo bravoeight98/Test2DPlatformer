@@ -10,6 +10,11 @@ public class PlayerMovementController : MonoBehaviour
 
     public float jumpForce = 5.0f;
 
+    bool isGrounded = false; 
+    public Transform isGroundedChecker; 
+    public float checkGroundRadius; 
+    public LayerMask groundLayer;
+
     // Start is called before the first frame update
     void Start()
     {
