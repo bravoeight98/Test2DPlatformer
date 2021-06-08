@@ -15,6 +15,9 @@ public class PlayerMovementController : MonoBehaviour
     public float checkGroundRadius = 0.5f; 
     public LayerMask groundLayer;
 
+    public float fallMultiplier = 2.5f; 
+    public float lowJumpMultiplier = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         Move();
         Jump();
+        BetterJump();
         CheckIfGrounded();
     }
 
@@ -45,6 +49,19 @@ public class PlayerMovementController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); 
         } 
     }
+
+    //Make Player Jump Like Mario (Inspired By https://www.youtube.com/watch?v=7KiK0Aqtmzc&ab_channel=BoardToBitsGames)
+    void BetterJump() 
+    {
+        if (rb.velocity.y < 0) 
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
+        } 
+        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) 
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }   
+}
 
     //Check of the player is touching the ground
     void CheckIfGrounded() 
