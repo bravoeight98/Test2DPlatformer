@@ -20,6 +20,7 @@ public class PlayerMovementController : MonoBehaviour
     void Update()
     {
         Move();
+        Jump();
     }
 
     //Move the Player Hrizontally
@@ -28,5 +29,14 @@ public class PlayerMovementController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal"); 
         float moveBy = x * speed; 
         rb.velocity = new Vector2(moveBy, rb.velocity.y); 
+    }
+
+    //Make Player Jump
+    void Jump() 
+    { 
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        { 
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce); 
+        } 
     }
 }
