@@ -26,6 +26,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         Move();
         Jump();
+        CheckIfGrounded();
     }
 
     //Move the Player Hrizontally
@@ -42,6 +43,21 @@ public class PlayerMovementController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) 
         { 
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); 
+        } 
+    }
+
+    //Check of the player is touching the ground
+    void CheckIfGrounded() 
+    { 
+        Collider2D collider = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer); 
+
+        if (collider != null) 
+        { 
+            isGrounded = true; 
+        } 
+        else 
+        { 
+            isGrounded = false; 
         } 
     }
 }
